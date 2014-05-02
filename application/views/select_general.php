@@ -9,10 +9,101 @@ $(document).ready(function(e) {
 });
 </script>
 
+
+<script>
+$(document).ready(function(){
+    
+        var temp;
+        var curr_text; 
+       $('#filterable-input').keyup(function(){
+           //alert('fire');
+           
+           
+           
+           temp = $(this).val();
+           
+           
+           
+           temp = temp.toUpperCase();
+           
+           
+         
+           
+           
+           
+           console.log(temp);
+                $(".ui-collapsible").each(function(i){
+
+             //  $(this).css("border","2px solid red");
+
+               var object = $(this);
+
+               var childrenMatch = 0;
+
+
+               object.find("li a").each(function(){
+
+                        curr_text = $(this).text();
+                       // console.log(curr_text);
+                        //console.log(temp);
+                        
+                         
+                          if (  curr_text.indexOf(temp) > -1)
+                                {
+                                   // $(this).css("border","2px solid red");
+                                    $(this).closest("li").show();
+                                    //console.log("MATCH::::");
+                                    //
+                                    //
+                                    //$(this).closest(".ui-collapsible").css("border","1px solid red");
+                                    childrenMatch++;
+                                }
+                          else 
+                          {
+                                $(this).closest("li").hide();
+                                //$(this).css("border","2px solid blue");
+                              // $(this).closest(".ui-collapsible").css("border","1px solid black");
+                              
+                          }
+        
+                        
+               });
+               
+               
+               if (childrenMatch>0)
+               {
+                   $(this).show();
+               }    
+               else
+               {
+                   $(this).hide();
+               }
+
+           });
+           
+           
+          
+           
+       });
+         
+    
+    
+      
+    
+    
+});
+
+</script>
+
 <link rel="stylesheet" type="text/css" href="<?= $css ?>/jquerymobile.css" />
 <a href="<?= $site ?>/reportes/index" data-role="button" data-transition="flip" data-ajax="false">Regresar</a>
 <form action="<?= $site ?>/reportes/viewgeneral" method="post" data-ajax="false">
     <legend>Seleccione las líneas</legend>
+    
+    <p>
+        <input type="text" data-type="search" id="filterable-input">
+    </p>
+    
     <p>
       <label for="textfield">Fecha inicial</label><br/>
       <input type="text" name="textfield" id="inicio" class="datepicker" width="250">

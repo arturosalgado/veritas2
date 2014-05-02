@@ -45,13 +45,22 @@
 | the active record class
 */
 
-$active_group = 'default';
+
+//echo $_SERVER['SERVER_NAME'];
+
+
+$active_group = 'local';
 $active_record = TRUE;
 
+
+if ($_SERVER['SERVER_NAME']=='veritas.arturodelosangeles.com')
+    $active_group = 'qa';
+    
+
 $db['local']['hostname'] = 'localhost';
-$db['local']['username'] = 'veritasvtwi';
-$db['local']['password'] = 'v3r1t4s2013';
-$db['local']['database'] = 'veritasprod';
+$db['local']['username'] = 'root';
+$db['local']['password'] = '';
+$db['local']['database'] = 'veritas';
 $db['local']['dbdriver'] = 'mysql';
 $db['local']['dbprefix'] = '';
 $db['local']['pconnect'] = TRUE;
@@ -63,6 +72,24 @@ $db['local']['dbcollat'] = 'utf8_general_ci';
 $db['local']['swap_pre'] = '';
 $db['local']['autoinit'] = TRUE;
 $db['local']['stricton'] = FALSE;
+
+$db['qa']['hostname'] = 'localhost';
+$db['qa']['username'] = 'walkleyc_veritas';
+$db['qa']['password'] = 'myrna101';
+$db['qa']['database'] = 'walkleyc_veritas';
+$db['qa']['dbdriver'] = 'mysql';
+$db['qa']['dbprefix'] = '';
+$db['qa']['pconnect'] = TRUE;
+$db['qa']['db_debug'] = TRUE;
+$db['qa']['cache_on'] = FALSE;
+$db['qa']['cachedir'] = '';
+$db['qa']['char_set'] = 'utf8';
+$db['qa']['dbcollat'] = 'utf8_general_ci';
+$db['qa']['swap_pre'] = '';
+$db['qa']['autoinit'] = TRUE;
+$db['qa']['stricton'] = FALSE;
+
+
 
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';

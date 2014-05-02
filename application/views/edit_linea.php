@@ -56,7 +56,7 @@ $stringMat .= isset($linea['c20'])&$linea['c20']!=""&$linea['c20']!="0"?$linea['
 </p>
 <p>
   <label for="ldm">Lista de Materiales (Separe por comas)</label>
-  <textarea name="ldm" id="ldm" cols="45" rows="5"><?= $stringMat ?></textarea>
+  <textarea name="ldm" id="ldm" cols="60" rows="16"><?= $stringMat ?></textarea>
 </p>
 
 <fieldset>

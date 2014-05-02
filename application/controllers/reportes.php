@@ -241,22 +241,45 @@
 	
 	
 	function capturas(){
+            
+            
+          //  echo "capturas controller ";
+            
+            
 		$data = $this->base->getBaseArray();
         if($this->session->userdata('rol') == '' || $this->session->userdata('rol') == 'usuario')
             redirect('login/denied');
         $data['userstring'] = "Bienvenido ".$this->session->userdata('nombre')." ".$this->session->userdata('apellidos');
         $this->load->view("headermobile", $data);
 		$this->load->model("Linea");
+                
+           
+                
 		$data['lineas'] = $this->Linea->getLineas();
 		$this->load->model("Captura");
 		$this->load->model("Produccion");
 		$data['capturas'] = $this->Captura->getAllCapturas();
+                
+                
+                
+                /*
 		foreach($data['capturas'] as $k => $v){
-			if($v['idlinea'] != "0" && $v['idlinea'] != "" && $v['idlinea'] != NULL)
+			if($v['idlinea'] != "0" && $v['idlinea'] != "" && $v['idlinea'] != NULL){
 				$data['capturas'][$k]['linea'] = $this->Linea->getLinea($v['idlinea']);
-			if($v['idproduccion'] != "0" && $v['idproduccion'] != "" && $v['idproduccion'] != NULL)
+                                
+                        }
+                        
+                        
+			if($v['idproduccion'] != "0" && $v['idproduccion'] != "" && $v['idproduccion'] != NULL){
 				$data['produccion'][$k]['produccion'] = $this->Produccion->getProduccion($v['idproduccion']);
-		}
+                                  
+                        }
+                          
+		}*/
+               //   echo "<pre>";
+               //   print_r($data);
+               //   echo "</pre>";
+                
         $this->load->view("select_captura", $data);
         $this->load->view("footer_general");
 	}
